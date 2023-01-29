@@ -20,3 +20,12 @@ services:
       - POSTGRES_PASSWORD=postgres
     depends_on:
       - db
+  redis:
+    image: redis
+    container_name: redis
+    command: redis-server /usr/local/etc/redis/redis.conf
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
